@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Inventory Tracker</title>
+    </head>
+    <body>
+        <h1>Inventory Tracker</h1>
+
+        <form action="/add" method="post">
+            <div>
+                <label for="title">Item</label>
+                <input type="text" name="title" placeholder="...">
+                <button type="submit">Add</button>
+            </div>
+        </form>
+
+    {% for item in item_list %}
+        <p> {{item.id}} | {{item.title}}</p>
+        <a href="/delete/{{ item.id }}">Delete</a>
+    {% endfor %}
+    </body>
+</html>
