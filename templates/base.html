@@ -1,23 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Inventory Tracker</title>
-    </head>
-    <body>
-        <h1>Inventory Tracker</h1>
+   <head>
+      <meta charset="UTF-8">
 
-        <form action="/add" method="post">
-            <div>
-                <label for="title">Item</label>
-                <input type="text" name="title" placeholder="...">
-                <button type="submit">Add</button>
-            </div>
-        </form>
+      <title>Inventory Tracker</title>
 
-    {% for item in item_list %}
-        <p> {{item.id}} | {{item.title}}</p>
-        <a href="/delete/{{ item.id }}">Delete</a>
-    {% endfor %}
-    </body>
+   </head>
+   <body>
+
+      <h1>Inventory Tracker</h1>
+
+      <form action="/add" method="post">
+         <div>
+            <label for="title">Item</label>
+            <input type="text" name="title" placeholder="title...">
+            <input type="text" name="description" placeholder="description...">
+            <button type="submit">Add</button>
+         </div>
+      </form>
+
+      <br>
+
+      <table>
+          <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Button</th>
+          </tr>
+
+          {% for item in item_list %}
+          <tr>
+              <td>{{item.id}}</td>
+              <td>{{item.title}}</td>
+              <td>{{item.description}}</td>
+              <td><a href="/delete/{{ item.id }}">Delete</a></td>
+          </tr>
+          {% endfor %}
+      </table>
+
+   </body>
 </html>
