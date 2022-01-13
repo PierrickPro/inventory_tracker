@@ -1,14 +1,10 @@
 
 from flask import Blueprint, request, redirect, url_for, render_template
-from extensions import db
+from database import db
+from models import Item
+
 
 main = Blueprint('main', __name__)
-
-
-class Item(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100))
-    description = db.Column(db.String(100))
 
 
 @main.route('/')

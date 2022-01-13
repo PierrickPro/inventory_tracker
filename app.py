@@ -1,16 +1,16 @@
 from flask import Flask
-from extensions import db
-import views
+from database import db
+from views import main
 
 
-def create_app(config_file='settings.py'):
+def create_app(config_file='config.py'):
     app = Flask(__name__)
 
     app.config.from_pyfile(config_file)
 
     db.init_app(app)
 
-    app.register_blueprint(views.main)
+    app.register_blueprint(main)
 
     return app
 
