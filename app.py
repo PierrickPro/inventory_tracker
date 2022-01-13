@@ -1,6 +1,6 @@
 from flask import Flask
-from database import db
-from views import main
+import models
+from routes import main
 
 
 def create_app(config_file='config.py'):
@@ -8,7 +8,8 @@ def create_app(config_file='config.py'):
 
     app.config.from_pyfile(config_file)
 
-    db.init_app(app)
+    models.init_db(app)
+    models.create_db(app)
 
     app.register_blueprint(main)
 

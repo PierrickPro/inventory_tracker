@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+   {% include 'header.html' %}
+   <body>
+      <br>
+      <form action="/submit_edit" method="post">
+         <div>
+             <input type="hidden" readonly="readonly" name="id" value="{{ edit_item.id }}">
+            <table>
+                   <tr>
+                       <td>Title</td>
+                       <td><input type="text" name="title" value="{{ edit_item.title }}"><td>
+                   </tr>
+                   <tr>
+                       <td>Description</td>
+                       <td><input type="text" name="description" value="{{ edit_item.description }}"></td>
+                   </tr>
+            </table>
+            <button type="submit">Update</button>
+         </div>
+      </form>
+
+   </body>
+</html>
