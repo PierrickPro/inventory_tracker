@@ -1,10 +1,11 @@
 <form action="/add" method="post">
     <div>
        <label for="title">Item</label>
-       <input type="text" name="name" placeholder="name...">
-        <input type="number" name="count" placeholder="count..." min="0" step="1"/>
-        <input type="text" name="kind" placeholder="kind...">
-       <input type="text" name="description" placeholder="description...">
+        {{form.csrf_token}}
+        {{form.name(placeholder="name...")}}
+        {{form.description(placeholder="description...")}}
+        {{form.kind(placeholder="kind...")}}
+        {{form.count(placeholder="count...")}}
        <button type="submit">Add</button>
     </div>
 </form>

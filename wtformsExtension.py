@@ -1,0 +1,18 @@
+from flask_wtf import FlaskForm
+from wtforms import StringField, IntegerField, HiddenField
+from wtforms.validators import InputRequired, Length
+
+
+class AddItemForm(FlaskForm):
+    name = StringField('name', validators=[InputRequired(), Length(max=100)])
+    description = StringField('description', validators=[InputRequired(), Length(max=100)])
+    kind = StringField('kind', validators=[InputRequired(), Length(max=100)])
+    count = IntegerField('count', validators=[InputRequired()])
+
+
+class EditItemForm(FlaskForm):
+    id = HiddenField('id', validators=[InputRequired()])
+    name = StringField('name', validators=[InputRequired(), Length(max=100)])
+    description = StringField('description', validators=[InputRequired(), Length(max=100)])
+    kind = StringField('kind', validators=[InputRequired(), Length(max=100)])
+    count = IntegerField('count', validators=[InputRequired()])

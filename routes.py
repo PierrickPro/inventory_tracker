@@ -1,4 +1,5 @@
 from flask import Blueprint, request, redirect, url_for, render_template
+from wtformsExtension import AddItemForm, EditItemForm
 from models import Item, db
 
 
@@ -9,7 +10,8 @@ main = Blueprint('main', __name__)
 def index():
     # show all items
     item_list = Item.query.all()
-    return render_template('pages/home.html', item_list=item_list)
+    form = AddItemForm()
+    return render_template('pages/home.html', item_list=item_list, form=form)
 
 
 @main.route('/add', methods=["POST"])
@@ -38,7 +40,8 @@ def delete(item_id):
 def edit_form(item_id):
     # redirect to edit page
     item = Item.query.filter(Item.id == item_id).first()
-    return render_template('pages/edit.html', edit_item=item)
+    form = EditItemForm(obj=item)
+    return render_template('pages/edit.html', edit_item=item, form=form)
 
 
 @main.route("/submit_edit", methods=["POST"])
@@ -49,9 +52,8 @@ def submit_edit():
     description = request.form.get("description")
     count = request.form.get("count")
 
-    Item.query.filter(Item.id == item_id).update({"name": name, "kind": kind, "description": description, "count": count})
+    Item.query.filter(Item.id == item_id).update(
+        {"name": name, "kind": kind, "description": description, "count": count})
 
     db.session.commit()
     return redirect(url_for("main.index"))
-
-
