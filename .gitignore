@@ -1,6 +1,5 @@
 .idea
 .DS_Store
-config.py
 __pycache__/
 /config.py
 db.sqlite

@@ -9,15 +9,17 @@ main = Blueprint('main', __name__)
 def index():
     # show all items
     item_list = Item.query.all()
-    return render_template('home_page.html', item_list=item_list)
+    return render_template('pages/home.html', item_list=item_list)
 
 
 @main.route('/add', methods=["POST"])
 def add():
     # add new item
-    title = request.form.get("title")
+    name = request.form.get("name")
     description = request.form.get("description")
-    new_item = Item(title=title, description=description)
+    kind = request.form.get("kind")
+    count = request.form.get("count")
+    new_item = Item(name=name, description=description, kind=kind, count=count)
     db.session.add(new_item)
     db.session.commit()
     return redirect(url_for("main.index"))
@@ -36,17 +38,18 @@ def delete(item_id):
 def edit_form(item_id):
     # redirect to edit page
     item = Item.query.filter(Item.id == item_id).first()
-    return render_template('edit_form_page.html', edit_item=item)
+    return render_template('pages/edit.html', edit_item=item)
 
 
 @main.route("/submit_edit", methods=["POST"])
 def submit_edit():
     item_id = request.form.get("id")
-    title = request.form.get("title")
+    name = request.form.get("name")
+    kind = request.form.get("kind")
     description = request.form.get("description")
+    count = request.form.get("count")
 
-    Item.query.filter(Item.id == item_id).update({"title": title})
-    Item.query.filter(Item.id == item_id).update({"description": description})
+    Item.query.filter(Item.id == item_id).update({"name": name, "kind": kind, "description": description, "count": count})
 
     db.session.commit()
     return redirect(url_for("main.index"))

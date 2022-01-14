@@ -1,7 +1,9 @@
 <table>
     <tr>
-        <th>ID</th>
-        <th>Title</th>
+        <th>Created On</th>
+        <th>Name</th>
+        <th>Count</th>
+        <th>Kind</th>
         <th>Description</th>
         <th>Delete</th>
         <th>Edit</th>
@@ -9,8 +11,10 @@
 
     {% for item in item_list %}
     <tr>
-        <td>{{item.id}}</td>
-        <td>{{item.title}}</td>
+        <td>{{item.created_on}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.count}}</td>
+        <td>{{item.kind}}</td>
         <td>{{item.description}}</td>
         <td><a href="/delete/{{ item.id }}">Delete</a></td>
         <td><a href="/edit_form/{{ item.id }}">Edit</a></td>

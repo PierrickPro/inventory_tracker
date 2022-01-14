@@ -1,0 +1,24 @@
+<form action="/submit_edit" method="post">
+         <div>
+             <input type="hidden" readonly="readonly" name="id" value="{{ edit_item.id }}">
+             <table>
+                 <tr>
+                     <td>Name</td>
+                     <td><input type="text" name="name" value="{{ edit_item.name }}"><td>
+                 </tr>
+                 <tr>
+                     <td>Count</td>
+                     <td><input type="number" name="count" value="{{ edit_item.count }}" min="0" step="1"/></td>
+                 </tr>
+                 <tr>
+                     <td>Kind</td>
+                     <td><input type="text" name="kind" value="{{ edit_item.kind }}"></td>
+                 </tr>
+                 <tr>
+                     <td>Description</td>
+                     <td><input type="text" name="description" value="{{ edit_item.description }}"></td>
+                 </tr>
+             </table>
+             <button type="submit">Update</button>
+         </div>
+</form>
