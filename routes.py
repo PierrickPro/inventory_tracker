@@ -38,8 +38,8 @@ def delete(item_id):
     return redirect(url_for("main.index"))
 
 
-@main.route("/edit_form/<int:item_id>")
-def edit_form(item_id):
+@main.route("/edit/<int:item_id>")
+def edit(item_id):
     # redirect to edit page
     item = Item.query.filter(Item.id == item_id).first()
     form = EditItemForm(obj=item)
@@ -61,8 +61,8 @@ def submit_edit():
     return redirect(url_for("main.index"))
 
 
-@main.route('/filter', methods=["POST"])
-def filter_table():
+@main.route('/submit_filter', methods=["POST"])
+def submit_filter():
     # show all items filtered
     name_filter = request.form.get("name")
     description_filter = request.form.get("description")
