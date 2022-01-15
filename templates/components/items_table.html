@@ -2,9 +2,9 @@
     <tr>
         <th>Created On</th>
         <th>Name</th>
-        <th>Count</th>
-        <th>Kind</th>
         <th>Description</th>
+        <th>Kind</th>
+        <th>Count</th>
         <th>Delete</th>
         <th>Edit</th>
     </tr>
@@ -12,9 +12,9 @@
     <tr>
         <td>{{item.created_on}}</td>
         <td>{{item.name}}</td>
-        <td>{{item.count}}</td>
-        <td>{{item.kind}}</td>
         <td>{{item.description}}</td>
+        <td>{{item.kind}}</td>
+        <td>{{item.count}}</td>
         <td><a href="/delete/{{ item.id }}">Delete</a></td>
         <td><a href="/edit_form/{{ item.id }}">Edit</a></td>
     </tr>
