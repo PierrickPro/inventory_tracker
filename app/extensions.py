@@ -2,6 +2,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, HiddenField
 from wtforms.validators import InputRequired, Length
 
+# wtForms classes
+
 
 class AddItemForm(FlaskForm):
     name = StringField('name', validators=[InputRequired(), Length(max=100)])

@@ -1,5 +1,5 @@
 from flask import Blueprint, request, redirect, url_for, render_template
-from wtformsExtension import AddItemForm, EditItemForm, FilterItemsForm
+from extensions import AddItemForm, EditItemForm, FilterItemsForm
 from models import db, Item
 
 
