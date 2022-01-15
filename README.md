@@ -9,7 +9,7 @@
 python -m pip install poetry
 poetry --version # make sure poetry was successfully installed
 poetry install
-export FLASK_APP=app.py 
+export FLASK_APP=run.py 
 flask run
 ```
 

@@ -1,6 +1,6 @@
 from flask import Flask
 import models
-from routes import main
+from views import main
 
 
 def create_app(config_file='config.py'):
