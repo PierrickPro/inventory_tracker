@@ -10,6 +10,14 @@ class AddItemForm(FlaskForm):
     count = IntegerField('count', validators=[InputRequired()])
 
 
+class FilterItemsForm(FlaskForm):
+    name = StringField('name')
+    description = StringField('description')
+    kind = StringField('kind')
+    min_count = IntegerField('min_count')
+    max_count = IntegerField('max_count')
+
+
 class EditItemForm(FlaskForm):
     id = HiddenField('id', validators=[InputRequired()])
     name = StringField('name', validators=[InputRequired(), Length(max=100)])

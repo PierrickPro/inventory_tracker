@@ -1,6 +1,6 @@
 from flask import Blueprint, request, redirect, url_for, render_template
-from wtformsExtension import AddItemForm, EditItemForm
-from models import Item, db
+from wtformsExtension import AddItemForm, EditItemForm, FilterItemsForm
+from models import db, Item
 
 
 main = Blueprint('main', __name__)
@@ -10,8 +10,9 @@ main = Blueprint('main', __name__)
 def index():
     # show all items
     item_list = Item.query.all()
-    form = AddItemForm()
-    return render_template('pages/home.html', item_list=item_list, form=form)
+    add_form = AddItemForm()
+    filter_form = FilterItemsForm()
+    return render_template('pages/home.html', item_list=item_list, add_form=add_form, filter_form=filter_form)
 
 
 @main.route('/add', methods=["POST"])
@@ -22,6 +23,7 @@ def add():
     kind = request.form.get("kind")
     count = request.form.get("count")
     new_item = Item(name=name, description=description, kind=kind, count=count)
+
     db.session.add(new_item)
     db.session.commit()
     return redirect(url_for("main.index"))
@@ -57,3 +59,35 @@ def submit_edit():
 
     db.session.commit()
     return redirect(url_for("main.index"))
+
+
+@main.route('/filter', methods=["POST"])
+def filter_table():
+    # show all items filtered
+    name_filter = request.form.get("name")
+    description_filter = request.form.get("description")
+    kind_filter = request.form.get("kind")
+    min_count_filter = request.form.get("min_count")
+    max_count_filter = request.form.get("max_count")
+
+    item_list = query_filtered_items(name_filter, description_filter, kind_filter, min_count_filter, max_count_filter)
+
+    add_form = AddItemForm()
+    filter_form = FilterItemsForm()
+    return render_template('pages/home.html', item_list=item_list, add_form=add_form, filter_form=filter_form)
+
+
+def query_filtered_items(name_filter, description_filter, kind_filter, min_count_filter, max_count_filter):
+
+    item_list = Item.query.filter(Item.name.contains(name_filter), Item.kind.contains(kind_filter),
+                                  Item.description.contains(description_filter))
+
+    # only apply min_count_filter if not null
+    if min_count_filter:
+        item_list = item_list.filter(Item.count >= min_count_filter)
+
+    # only apply max_count_filter if not null
+    if max_count_filter:
+        item_list = item_list.filter(Item.count <= max_count_filter)
+
+    return item_list

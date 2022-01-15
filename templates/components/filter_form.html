@@ -1,0 +1,12 @@
+<form action="/filter" method="post">
+    <div>
+        <label for="title">Filters</label>
+        {{filter_form.csrf_token}}
+        {{filter_form.name(placeholder="name...")}}
+        {{filter_form.description(placeholder="description...")}}
+        {{filter_form.kind(placeholder="kind...")}}
+        {{filter_form.min_count(placeholder="min count...")}}
+        {{filter_form.max_count(placeholder="max count...")}}
+        <button type="submit">Apply</button>
+    </div>
+</form>
