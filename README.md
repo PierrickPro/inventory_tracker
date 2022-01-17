@@ -4,20 +4,17 @@
 
 [Python](https://www.python.org/downloads/) (3.8.9 or later) is required to run this project.
 
-1. Install [poetry](https://python-poetry.org/docs/)
+1. Clone this repository on your computer
 
-2. Clone this repository on your computer
-
-3.  run the following commands from the repo's root directory:
+2.  run the following commands from the repo's root directory:
 ```
-poetry --version # make sure poetry was successfully installed
-poetry install
+pip install -r requirements.txt
 export FLASK_APP=app/run.py
 python -m flask run
 ```
 The project is now running: ```* Running on http://... ```
 
-4. Copy the URL given and paste it in your web browser
+3. Copy the URL given and paste it in your web browser
 
 
 ## Database Settings
