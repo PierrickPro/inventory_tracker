@@ -13,7 +13,7 @@
 poetry --version # make sure poetry was successfully installed
 poetry install
 export FLASK_APP=app/run.py
-poetry run flask run
+python -m flask run
 ```
 The project is now running: ```* Running on http://... ```
 
