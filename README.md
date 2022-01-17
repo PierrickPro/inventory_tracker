@@ -6,13 +6,13 @@
 
 1. Clone this repository on your computer
 
-2.  run the following commands from the repo's root directory:
+2. using Terminal (Command Prompt on Windows) run the following commands from the repo's root directory:
 ```
-pip install -r requirements.txt
-export FLASK_APP=app/run.py
-python -m flask run
+pip3 install -r requirements.txt
+export FLASK_APP=app/run.py # use 'set FLASK_APP=app/run.py" on Windows
+python3 -m flask run
 ```
-The project is now running: ```* Running on http://... ```
+The project should be running: ```* Running on http://... ```
 
 3. Copy the URL given and paste it in your web browser
 
